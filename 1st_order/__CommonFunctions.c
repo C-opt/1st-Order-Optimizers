@@ -34,3 +34,41 @@ double L2Norm(double *array, int array_size) {
 	norm = sqrt(tmp_sum);
 	return norm;
 }
+
+double inner_product(double *array1, double *array2, int data_dim) {
+
+	int tmp_inner_product = 0;
+	int j;
+
+	for (j = 0; j < data_dim; j++)
+		tmp_inner_product = tmp_inner_product + array1[j] * array2[j];
+
+	return tmp_inner_product;
+}
+
+double absolute(double num) {
+	if (num < 0)
+		num = -num;
+	else
+		num = num;
+	return num;
+}
+
+double maximum(double num1, double num2){
+	if (num1 >= num2)
+		return num1;
+	else
+		return num2;
+}
+
+void prox_map(double *array, int array_size, double lambda1, double lambda2) {
+	int i;
+	int sign;
+	for (i = 0; i < array_size; i++) {
+		if (array[i] >= 0)
+			sign = 1;
+		else
+			sign = -1;
+		array[i] = (1.0 / (1 + lambda2))*sign*maximum(0, absolute(array[i]) - lambda1);
+	}
+}

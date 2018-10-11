@@ -1,1 +1,1 @@
-gcc -o sgd main.c __CommonFunctions.c __FirstStoch.c __IOcsv.c __LogisticRegL2.c __MatrixFunctions.c  -lm -O3
+gcc -o sgd.exe main.c __CommonFunctions.c __FirstStoch.c __IOcsv.c __LogisticRegL2.c __MatrixFunctions.c  -lm -O3
